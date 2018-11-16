@@ -1,0 +1,81 @@
+﻿@using FootballGround.Common.MenuHelper
+@model List<MenuItem>
+@{
+    Layout = null;
+    string _url = string.Empty;
+}
+@functions{
+
+    public string IsOpenActiveMenu(bool flag, List<MenuItem> child)
+    {
+        string sClass = string.Empty;
+        string sActive = string.Empty;
+        string IsOpenMenu = string.Empty;
+
+        if (flag)
+        {
+            if (child.Any())
+            {
+
+                foreach (var item in child)
+                {
+
+                    string sURL = System.Web.HttpContext.Current.Request.Url.PathAndQuery;
+                    string supStr = sURL.Substring(sURL.IndexOf("/")+1);
+
+                    if (item.Link.Equals(supStr))
+                    {
+                        return "treeview active menu-open";
+                    }
+                    if (sClass.Equals(string.Empty))
+                    {
+                        sClass = IsOpenActiveMenu(item.IsChild, item.Childs);
+                    }
+                }
+            }
+        }
+        return sClass;
+    }
+}
+
+@helper  ShowMenu(List<MenuItem> category)
+{
+foreach (var item in category)
+{
+    string open = IsOpenActiveMenu(item.IsChild, item.Childs);
+    if (open.Equals(string.Empty) && item.IsChild)
+    {
+        open = "treeview";
+    }
+    if (open.Equals(string.Empty) && !item.IsChild)
+    {
+        open = "";
+    }
+
+    <li class="@(open) @ActiveMenu.IsActive(item.Controller,item.Action)">
+        @if (!item.IsChild)
+        {
+            <a href="/@item.Link">
+                <i class="@item.Icon"></i> <span>@item.Title</span>  
+            </a>
+        }
+        else
+        {
+            <a href="#">
+                <i class="@item.Icon"></i> <span>@item.Title</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+                <ul class="treeview-menu">
+                    @ShowMenu(item.Childs)
+                </ul>
+        }
+    </li>
+}
+}
+@ShowMenu(Model)
+
+
+
+

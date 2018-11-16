@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLySanBongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QuanLySanBongEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="CheckIsPermissionInUserRoles" ReturnType="Collection(QuanLySanBongModel.CheckIsPermissionInUserRoles_Result)">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+      <Parameter Name="PermissionsName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetUserRole_Permissions" ReturnType="Collection(QuanLySanBongModel.sp_GetUserRole_Permissions_Result)">
+      <Parameter Name="PermissionsName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetUserRoleInRole" ReturnType="Collection(QuanLySanBongModel.sp_GetUserRoleInRole_Result)">
+      <Parameter Name="IsUserRoleInRole" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Permissions" EntityType="QuanLySanBongModel.Permission" />
+    <EntitySet Name="C__MigrationHistory" EntityType="QuanLySanBongModel.C__MigrationHistory" />
+    <EntitySet Name="Roles" EntityType="QuanLySanBongModel.Role" />
+    <EntitySet Name="Users" EntityType="QuanLySanBongModel.User" />
+    <EntitySet Name="UserClaims" EntityType="QuanLySanBongModel.UserClaim" />
+    <EntitySet Name="UserLogins" EntityType="QuanLySanBongModel.UserLogin" />
+    <EntitySet Name="UserRoles" EntityType="QuanLySanBongModel.UserRole" />
+    <EntitySet Name="vw_User_Role" EntityType="QuanLySanBongModel.vw_User_Role" />
+    <AssociationSet Name="FK_MainProduct_UserRole_MainProduct_Role_RoleId" Association="QuanLySanBongModel.FK_MainProduct_UserRole_MainProduct_Role_RoleId">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MainProduct_UserClaim_MainProduct_User_UserId" Association="QuanLySanBongModel.FK_MainProduct_UserClaim_MainProduct_User_UserId">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserClaim" EntitySet="UserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MainProduct_UserLogin_MainProduct_User_UserId" Association="QuanLySanBongModel.FK_MainProduct_UserLogin_MainProduct_User_UserId">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MainProduct_UserRole_MainProduct_User_UserId" Association="QuanLySanBongModel.FK_MainProduct_UserRole_MainProduct_User_UserId">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="CheckIsPermissionInUserRoles_Result">
+    <Property Type="String" Name="UserName" Nullable="true" />
+    <Property Type="String" Name="UserRoleId" Nullable="true" />
+    <Property Type="Boolean" Name="IsSysAdmin" Nullable="false" />
+    <Property Type="String" Name="UserRoleId1" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetUserRole_Permissions_Result">
+    <Property Type="String" Name="UserRoleId" Nullable="true" />
+    <Property Type="String" Name="DisplayName" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetUserRoleInRole_Result">
+    <Property Type="String" Name="UserName" Nullable="true" />
+    <Property Type="String" Name="UserRoleId" Nullable="true" />
+    <Property Type="Boolean" Name="IsSysAdmin" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserRoleId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsSysAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoles" Relationship="QuanLySanBongModel.FK_MainProduct_UserRole_MainProduct_Role_RoleId" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserClaims" Relationship="QuanLySanBongModel.FK_MainProduct_UserClaim_MainProduct_User_UserId" FromRole="User" ToRole="UserClaim" />
+    <NavigationProperty Name="UserLogins" Relationship="QuanLySanBongModel.FK_MainProduct_UserLogin_MainProduct_User_UserId" FromRole="User" ToRole="UserLogin" />
+    <NavigationProperty Name="UserRoles" Relationship="QuanLySanBongModel.FK_MainProduct_UserRole_MainProduct_User_UserId" FromRole="User" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="QuanLySanBongModel.FK_MainProduct_UserClaim_MainProduct_User_UserId" FromRole="UserClaim" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="QuanLySanBongModel.FK_MainProduct_UserLogin_MainProduct_User_UserId" FromRole="UserLogin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserRoleId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="QuanLySanBongModel.FK_MainProduct_UserRole_MainProduct_Role_RoleId" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="QuanLySanBongModel.FK_MainProduct_UserRole_MainProduct_User_UserId" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <EntityType Name="vw_User_Role">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IsSysAdmin" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserRoleId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsSysAdmin" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_MainProduct_UserRole_MainProduct_Role_RoleId">
+    <End Type="QuanLySanBongModel.Role" Role="Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLySanBongModel.UserRole" Role="UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MainProduct_UserClaim_MainProduct_User_UserId">
+    <End Type="QuanLySanBongModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="QuanLySanBongModel.UserClaim" Role="UserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MainProduct_UserLogin_MainProduct_User_UserId">
+    <End Type="QuanLySanBongModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLySanBongModel.UserLogin" Role="UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MainProduct_UserRole_MainProduct_User_UserId">
+    <End Type="QuanLySanBongModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLySanBongModel.UserRole" Role="UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

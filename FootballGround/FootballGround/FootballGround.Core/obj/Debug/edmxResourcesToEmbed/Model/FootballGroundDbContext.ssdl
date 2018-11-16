@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLySanBongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QuanLySanBong.dbo.Grounds' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Grounds">
+          <Property Name="Id" Type="int" />
+          <Property Name="IdGroundType" Type="int" />
+          <Property Name="IdFootballGround" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="IdUserCreate" Type="int" />
+          <Property Name="IdUserUpdate" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>-->
+  <EntityType Name="GroundTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IdFootballGround" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IdUserCreate" Type="int" />
+    <Property Name="IdUserUpdate" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QuanLySanBong.dbo.GroupGrounds' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="GroupGrounds">
+          <Property Name="Id" Type="int" />
+          <Property Name="ListIdGround" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IdFootballGround" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="IdUserCreate" Type="int" />
+          <Property Name="IdUserUpdate" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QuanLySanBong.dbo.Oders' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Oders">
+          <Property Name="Id" Type="int" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdFootballGround" Type="int" />
+          <Property Name="PriceSum" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OderDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="IdUserCreate" Type="int" />
+          <Property Name="IdUserUpdate" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="IsPayment" Type="bit" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QuanLySanBong.dbo.OrderDetail' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="OrderDetail">
+          <Property Name="Id" Type="int" />
+          <Property Name="IdGroupGround" Type="int" />
+          <Property Name="IdGround" Type="int" />
+          <Property Name="IdOder" Type="int" />
+          <Property Name="IdFootballGround" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="IdUserCreate" Type="int" />
+          <Property Name="IdUserUpdate" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IdTimePrices" Type="int" />
+          <Property Name="PriceSum" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="FirstTime" Type="datetime" />
+          <Property Name="LastTime" Type="datetime" />
+          <Property Name="IsPayment" Type="bit" />
+          <Property Name="IsStart" Type="bit" />
+        </EntityType>-->
+  <EntityType Name="TimePrices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IdFootballGround" Type="int" />
+    <Property Name="IdGroupGround" Type="int" />
+    <Property Name="FirstTime" Type="float" />
+    <Property Name="LastTime" Type="float" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="IdUserCreate" Type="int" />
+    <Property Name="IdUserUpdate" Type="int" />
+    <Property Name="IdGroundType" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="QuanLySanBongModelStoreContainer">
+    <EntitySet Name="GroundTypes" EntityType="Self.GroundTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TimePrices" EntityType="Self.TimePrices" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

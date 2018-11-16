@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuanLySanBongModelStoreContainer" CdmEntityContainer="QuanLySanBongEntities">
+    <EntitySetMapping Name="GroundTypes">
+      <EntityTypeMapping TypeName="QuanLySanBongModel.GroundType">
+        <MappingFragment StoreEntitySet="GroundTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdFootballGround" ColumnName="IdFootballGround" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="IdUserCreate" ColumnName="IdUserCreate" />
+          <ScalarProperty Name="IdUserUpdate" ColumnName="IdUserUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimePrices">
+      <EntityTypeMapping TypeName="QuanLySanBongModel.TimePrice">
+        <MappingFragment StoreEntitySet="TimePrices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdFootballGround" ColumnName="IdFootballGround" />
+          <ScalarProperty Name="IdGroupGround" ColumnName="IdGroupGround" />
+          <ScalarProperty Name="FirstTime" ColumnName="FirstTime" />
+          <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="IdUserCreate" ColumnName="IdUserCreate" />
+          <ScalarProperty Name="IdUserUpdate" ColumnName="IdUserUpdate" />
+          <ScalarProperty Name="IdGroundType" ColumnName="IdGroundType" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
