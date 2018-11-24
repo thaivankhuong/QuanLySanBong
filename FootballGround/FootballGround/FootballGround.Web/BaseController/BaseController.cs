@@ -1,4 +1,5 @@
-﻿using FootballGround.Data.Repositories;
+﻿using FootballGround.Core.Depedency;
+using FootballGround.Data.Repositories;
 using FootballGround.Data.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace FootballGround.Web.BaseController
 {
     public abstract class BaseController : Controller
     {
-        public PermissionRepostiory permissionRepostiory;
-        protected BaseController()
+        public IResolveDependencies dependenciesResolver;
+        private IPermissionRepostiory permissionRepostiory;
+        public BaseController()
         {
-            permissionRepostiory = new PermissionRepostiory();
+            dependenciesResolver = System.Web.Mvc.DependencyResolver.Current.GetService<IResolveDependencies>();
+            permissionRepostiory = dependenciesResolver.Resolve<IPermissionRepostiory>();
         }
 
         protected bool HasPermission(string permissionName)

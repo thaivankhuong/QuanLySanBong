@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace FootballGround.Web.Controllers
 {
     
-    public class AccountTestController : Controller
+    public class AccountTestController : FootballGround.Web.BaseController.BaseController 
     {
         // GET: AccountTest
         public ActionResult Index()

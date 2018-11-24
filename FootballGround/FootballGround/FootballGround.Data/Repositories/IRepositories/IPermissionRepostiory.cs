@@ -1,4 +1,5 @@
 ﻿using FootballGround.Core.Infrastructure.Interfaces;
+using FootballGround.Core.Model;
 using FootballGround.Core.SqlModel;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FootballGround.Data.Repositories.IRepositories
 {
-   public interface IPermissionRepostiory : IRepository<PermissionInUserRoles>
+   public interface IPermissionRepostiory : IRepository<ApplicationUser>
     {
         bool TryCheckAccess(string permissionName, IIdentity user);
     }

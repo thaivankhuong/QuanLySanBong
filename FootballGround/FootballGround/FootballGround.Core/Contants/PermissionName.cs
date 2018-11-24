@@ -18,8 +18,10 @@ namespace FootballGround.Core.Contants
     }
     public static class DisplayName
     {
+        public const string UserManger = "Quản lý người dùng";
+
         public const string RoleManger = "Quản lý vai trò";
-        public const string UpdateRoles = "Cập nhật người dùng";
+        public const string UpdateRoles = "Cập nhật vai trò dùng";
         public const string DeleteRoles = "Xóa vai trò";
         public const string AddRoles = "Thêm mới vai trò";
     }

@@ -11,10 +11,11 @@ using FootballGround.Core.Infrastructure.Interfaces;
 using System.Data.SqlClient;
 using System.Security.Claims;
 using System.Web.Security;
+using FootballGround.Core.Model;
 
 namespace FootballGround.Data.Repositories
 {
-    public class PermissionRepostiory : RepositoryBase<PermissionInUserRoles>, IPermissionRepostiory
+    public class PermissionRepostiory : RepositoryBase<ApplicationUser>, IPermissionRepostiory
     {
         public PermissionRepostiory()
         {
