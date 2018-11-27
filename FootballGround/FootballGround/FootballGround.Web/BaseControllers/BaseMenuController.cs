@@ -6,9 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FootballGround.Web.BaseController
+namespace FootballGround.Web.BaseControllers
 {
-    public class BaseMenuController : Controller
+    public abstract class BaseMenuController : Controller
     {
         public List<MenuItem> BuildMenu { get; set; }
         private void InitMenu()

@@ -7,11 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FootballGround.Web.BaseController
+namespace FootballGround.Web.BaseControllers
 {
     public abstract class BaseController : Controller
     {
-        public IResolveDependencies dependenciesResolver;
+        protected readonly IResolveDependencies dependenciesResolver;
         private IPermissionRepostiory permissionRepostiory;
         public BaseController()
         {

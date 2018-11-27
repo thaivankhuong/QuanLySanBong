@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Menu\ActiveMenu.cs" />
     <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Permission\IPermissionApplication.cs" />
     <Compile Include="Permission\PermissionApplication.cs" />
     <Compile Include="Permission\PermissionProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

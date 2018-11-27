@@ -13,11 +13,12 @@ using FootballGround.Data.Repositories;
 using FootballGround.Data.Repositories.ImplementInterfacesRepositories;
 using System.Data.Entity.Validation;
 using FootballGround.Data.Repositories.InterfaceRepositories;
+using FootballGround.Web.BaseControllers;
 
 namespace FootballGround.Web.Controllers
 {
  
-    public class AccountController : FootballGround.Web.BaseController.BaseController
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

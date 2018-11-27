@@ -6,7 +6,7 @@ using FootballGround.Data.Repositories.IRepositories;
 using FootballGround.Common.MenuHelper;
 using System.Web.Mvc;
 
-namespace FootballGround.Web.BaseController
+namespace FootballGround.Web.BaseControllers
 {
     public abstract class MenuBaseController : BaseController
     {

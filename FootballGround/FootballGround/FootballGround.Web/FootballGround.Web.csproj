@@ -210,11 +210,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountTestController.cs" />
-    <Compile Include="BaseController\BaseController.cs" />
-    <Compile Include="BaseController\BaseMenuController.cs" />
+    <Compile Include="BaseControllers\BaseController.cs" />
+    <Compile Include="BaseControllers\BaseMenuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="BaseController\MenuBaseController.cs" />
+    <Compile Include="BaseControllers\MenuBaseController.cs" />
     <Compile Include="Controllers\MenuFootballGroundController.cs" />
     <Compile Include="Controllers\UnauthorisedController.cs" />
     <Compile Include="Controllers\UserMangerController.cs" />
