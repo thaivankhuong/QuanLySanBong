@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -3240,6 +3240,7 @@
     <Content Include="Content\Admin\bower_components\ckeditor\styles.js" />
     <Content Include="Content\Admin\bower_components\datatables.net-bs\css\dataTables.bootstrap.css" />
     <Content Include="Content\Admin\bower_components\datatables.net-bs\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\Admin\bower_components\datatables.net-bs\css\dataTables.custom.css" />
     <Content Include="Content\Admin\bower_components\datatables.net-bs\js\dataTables.bootstrap.js" />
     <Content Include="Content\Admin\bower_components\datatables.net-bs\js\dataTables.bootstrap.min.js" />
     <Content Include="Content\Admin\bower_components\datatables.net-bs\License.txt" />
@@ -6433,6 +6434,7 @@
     <Content Include="Content\Admin\bower_components\select2\tests\vendor\qunit-1.23.1.css" />
     <Content Include="Content\Admin\bower_components\select2\tests\vendor\qunit-1.23.1.js" />
     <Content Include="Content\Admin\bower_components\select2\vendor\jquery-2.1.0.js" />
+    <Content Include="Content\Admin\DatatableCss\custom-style.css" />
     <Content Include="Content\Admin\dist\css\AdminLTE.css" />
     <Content Include="Content\Admin\dist\css\AdminLTE.min.css" />
     <Content Include="Content\Admin\dist\css\alt\AdminLTE-bootstrap-social.css" />
@@ -6682,6 +6684,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\AdminJsDataTable\User.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -7228,6 +7231,7 @@
     <Content Include="Views\MenuFootballGround\LeftMenu.cshtml" />
     <Content Include="Views\Unauthorised\Index.cshtml" />
     <Content Include="Views\UserManger\Index.cshtml" />
+    <Content Include="Views\UserManger\_ViewListUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7239,6 +7243,17 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\Admin\bower_components\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810291517070_CreateDBV1.resx">
+      <DependentUpon>201810291517070_CreateDBV1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FootballGround.Business\FootballGround.Business.csproj">
@@ -7257,17 +7272,6 @@
       <Project>{c598d7cf-823d-447c-aa18-c5af62b3b428}</Project>
       <Name>FootballGround.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Content\Admin\bower_components\moment\moment.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810291517070_CreateDBV1.resx">
-      <DependentUpon>201810291517070_CreateDBV1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

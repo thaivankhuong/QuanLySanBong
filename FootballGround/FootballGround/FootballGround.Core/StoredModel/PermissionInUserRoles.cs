@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootballGround.Core.SqlModel
+namespace FootballGround.Core.StoredModel
 {
     public class PermissionInUserRoles
     {

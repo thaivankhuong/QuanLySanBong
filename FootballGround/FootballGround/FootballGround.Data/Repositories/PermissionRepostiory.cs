@@ -5,20 +5,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Principal;
-using FootballGround.Core.SqlModel;
+using FootballGround.Core.StoredModel;
 using FootballGround.Core.Infrastructure;
 using FootballGround.Core.Infrastructure.Interfaces;
 using System.Data.SqlClient;
 using System.Security.Claims;
 using System.Web.Security;
+using FootballGround.Core.Model;
+
 
 namespace FootballGround.Data.Repositories
 {
-    public class PermissionRepostiory : RepositoryBase<PermissionInUserRoles>, IPermissionRepostiory
+    public class PermissionRepostiory : RepositoryBase<ApplicationUser>, IPermissionRepostiory
     {
         public PermissionRepostiory()
         {
-
+        }
+        public List<ApplicationUserLoginViewModel> Get_listUser(int intstartRec, int PageSize, string  keyword )
+        {
+            keyword = keyword == null ? "" : keyword ; 
+            object[] objKeyword = new object[] {
+                "@startRec", intstartRec,
+                "@PageSize",PageSize,
+                "@keyword", keyword
+            };
+            var z1 = new SqlParameter("startRec", intstartRec);
+            var z2 = new SqlParameter("PageSize", PageSize);
+            var z3 = new SqlParameter("keyword", keyword);
+            var storeName = "sp_Get_List_User";
+            return this.DbContext.ExecuteStoredProcedure<ApplicationUserLoginViewModel>
+                    (storeName, z1, z2 , z3);
         }
 
         public bool TryCheckAccess(string permissionName, IIdentity user)
