@@ -18,7 +18,6 @@ namespace FootballGround.Common.MenuHelper
             }
         }
         public string Title { get; set; }
-        public bool IsCheckPermission { get; set; }
         public List<MenuItem> Childs { get; set; }
         public string Controller
         {

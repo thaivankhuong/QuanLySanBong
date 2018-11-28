@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using FootballGround.Common.MenuHelper;
 using FootballGround.Data.Repositories.IRepositories;
-using FootballGround.Web.BaseController;
+using FootballGround.Common.Permission;
+using FootballGround.Core.Contants;
+using FootballGround.Web.BaseControllers;
 
 namespace FootballGround.Web.Controllers
 {
@@ -24,13 +26,13 @@ namespace FootballGround.Web.Controllers
         {
             List<MenuItem> BuildMenu = new List<MenuItem>();
 
-           if(HasPermission("FootballGround.UserManger"))
+           if(HasPermission(Common.Permission.NamePermission.UserManger))
             {               
                 BuildMenu.Add(
                     
                     new MenuItem
                     {
-                        Title = "Quản lý người dùng",
+                        Title = DisplayName.UserManger,
                         Icon = "glyphicon glyphicon-home",
                         Link = "UserManger/Index",
                     }

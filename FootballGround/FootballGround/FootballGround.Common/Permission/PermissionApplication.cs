@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace FootballGround.Common.Permission
 {
-    public class PermissionApplication
+    public class PermissionApplication : IPermissionApplication
     {
-
 
         public IEnumerable<PermissionProvider> GetPermissions()
         {

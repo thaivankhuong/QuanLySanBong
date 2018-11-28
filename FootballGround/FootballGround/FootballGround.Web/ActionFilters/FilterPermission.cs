@@ -7,16 +7,21 @@ using FootballGround.Common.IdentityMethods;
 using FootballGround.Business.Repositories.IRepositories;
 using FootballGround.Data.Repositories;
 using System.Web.Routing;
+using FootballGround.Core.Depedency;
+using FootballGround.Data.Repositories.IRepositories;
 
 namespace FootballGround.Web.ActionFilters
 {
     public class FilterPermission : AuthorizeAttribute
     {
         public string PermissionName { get; set; }
-        private PermissionRepostiory permissionRepostiory;
+        private readonly IResolveDependencies dependenciesResolver;
+        private IPermissionRepostiory permissionRepostiory;
+
         public FilterPermission()
         {
-            permissionRepostiory = new PermissionRepostiory();
+            dependenciesResolver = System.Web.Mvc.DependencyResolver.Current.GetService<IResolveDependencies>();
+            permissionRepostiory = dependenciesResolver.Resolve<IPermissionRepostiory>();
         }
      
         public override void OnAuthorization(AuthorizationContext filterContext)
